@@ -14,6 +14,7 @@
      height: 234px;
      box-shadow: 0px 8px 16px rgba(17, 17, 17, 0.06);
      padding-top: 60px;
+     margin-bottom: 50px;
 }
  .header-children-container{
      width: 70%;
@@ -77,26 +78,158 @@
 
 }
 
- h1 {
-     font-size: 3.2em;
-     line-height: 1.1;
+.history{
+font-family: 'Red Hat Display';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 152.2%;
+color: #000000;
+margin-bottom: 20px;
 }
- button {
-     border-radius: 8px;
-     border: 1px solid transparent;
-     padding: 0.6em 1.2em;
-     font-size: 1em;
-     font-weight: 500;
-     font-family: inherit;
-     background-color: #1a1a1a;
-     cursor: pointer;
-     transition: border-color 0.25s;
+
+.table-section{
+  max-width: 70% !important;
+  margin: 0 auto;
 }
- button:hover {
-     border-color: #646cff;
+
+ .ant-table-thead tr:first-child >*:first-child{
+  border-start-start-radius: 4px
 }
- button:focus, button:focus-visible {
-     outline: 4px auto -webkit-focus-ring-color;
+
+#root > div > div.table-section > div > div > div > div > div > div > table > thead > tr > th:nth-child(1){
+  border-start-start-radius: 4px !important
+}
+
+#root > div > div.table-section > div > div > div > div > div > div > table > thead > tr > th:nth-child(6){
+  border-start-end-radius: 4px !important
+}
+
+.table-section thead tr th{
+  background: #EEEEEE !important;
+  height: 30px;
+}
+
+.date-picker-container{
+  margin-bottom: 40px ;
+  display: flex;
+  gap: 16px
+}
+
+.date-picker-container label , .input-container label{
+font-family: Red Hat Display;
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.date-picker-container .ant-form-item-row{
+  display: block;
+}
+
+.react-datepicker-wrapper, .react-datepicker__input-container, .react-datepicker__input-container input {
+  height: 42px !important;
+}
+
+.react-datepicker-wrapper{
+  width: 200px !important;
+}
+.react-datepicker__input-container input {
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  width: 200px;
+  /* padding-left: 16px */
+}
+
+.select-type-date-picker label{
+  height: 22px !important;
+}
+
+.filter-btn{
+  border: 1px solid #1B31A8;
+ border-radius: 8px;
+ width: 78px;
+height: 40px;
+ margin-top: 24px;
+ color: #1B31A8;
+}
+
+.date-pick-parent{
+  width: 200px
+}
+
+.react-datepicker-popper{
+  z-index: 10;
+}
+
+.react-datepicker__header{
+  background-color: white !important;
+  border-bottom: none !important;
+
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range{
+  background: #000000 !important;
+ border-radius: 8px !important;
+}
+
+.react-datepicker__day, .react-datepicker__month-text, .react-datepicker__quarter-text, .react-datepicker__year-text{
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 8px;
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before{
+  display: none ! important;
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after{
+  display: none !important;
+}
+
+.display-card{
+height: 85px;
+background: #F9F9F9;
+padding: 25px;
+border: 1px solid #EFF0F7;
+border-radius: 12px;
+}
+
+.crypto-info{
+ display: flex;
+ justify-content: space-between;
+ 
+}
+.crypto-info p {
+  margin: 0px;
+  font-family: Red Hat Display;
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0px;
+text-align: center;
+color: #000000;
+
+}
+.rounded-green-circle{
+  background: #40B439;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  
+}
+
+
+.amount, .crypt-val{
+font-family: Red Hat Display;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 152.2%;
+text-align: center;
 }
  @media only screen and (max-width: 768px) {
      .header {
@@ -118,3 +251,15 @@
     }
 }
  
+
+@media only screen and (max-width: 575px) {
+ 
+  .header {
+    height: 530px;
+}
+
+  .date-pick-parent, .react-datepicker-wrapper, .react-datepicker__input-container input{
+    width: 114px
+  }
+
+}

@@ -9,7 +9,7 @@ import {
   Space,
 } from "antd";
 const { Option } = Select;
-import useWindowWidth from "../hooks/useMediaQuery";
+import useWindowWidth from "../../hooks/useMediaQuery";
 
 const Header = () => {
   const isMobile = useWindowWidth();
