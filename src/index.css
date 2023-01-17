@@ -53,6 +53,7 @@
      height: 40px;
      background: #49CD5E;
      border-radius: 8px;
+     box-shadow: none;
 }
  .exchange-button{
      padding: 12px 24px;

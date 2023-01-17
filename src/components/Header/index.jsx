@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Form,
   Input,
@@ -8,19 +9,52 @@ import {
   InputNumber,
   Space,
 } from "antd";
-const { Option } = Select;
+
+import BitcoinSVG from "../icons/Bitcoin";
+import EthereumSVG from "../icons/Ethereum";
+import RippleSVG from "../icons/Ripple";
+import Litcoin from "../icons/Litcoin";
+import USD from "../icons/USD";
+import Euro from "../icons/Euro";
+import ArrowIcon from "../icons/ArrowIcon";
 import useWindowWidth from "../../hooks/useMediaQuery";
 
-const Header = () => {
+const saveExchangeType = "saveExchange";
+
+
+const Header = ({ socket, isConnected }) => {
   const isMobile = useWindowWidth();
-  console.log(isMobile, "............");
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
+  const [currencyFrom, setCurrencyFrom] = useState("Bitcoin");
+  const [amountFrom, setAmountFrom] = useState(1);
+  const [currencyTo, setCurrencyTo] = useState("USD");
+  const [amountTo, setAmountTo] = useState(44000);
+
+  const onlyNumber = (e) => {
+    const keyCode = e.keyCode || e.which;
+    const keyValue = String.fromCharCode(keyCode);
+    if (!/^[0-9]*$/.test(keyValue)) {
+      e.preventDefault();
+    }
   };
 
-  const onChange = (value) => {
-    console.log("changed", value);
+  const saveExchange = () => {
+
+    if (!isConnected) return alert("no websocket connection established");
+
+    socket.emit(saveExchangeType, {
+      currencyFrom,
+      amountFrom,
+      currencyTo,
+      amountTo,
+      type: "exchanged",
+    });
   };
+
+
+  let isButtonDisabled = false;
+  if (!amountFrom || !amountTo) {
+    isButtonDisabled = true;
+  }
 
   return (
     <div className="header">
@@ -32,38 +66,38 @@ const Header = () => {
             <Space size={16}>
               <Form.Item label="Select Currency">
                 <Select
-                  defaultValue="lucy"
+                  suffixIcon={<ArrowIcon />}
+                  defaultValue={currencyFrom}
                   style={{ width: 200, height: 42 }}
-                  onChange={handleChange}
+                  onChange={setCurrencyFrom}
                   options={[
                     {
-                      value: "jack",
-                      label: "Jack",
+                      value: "Bitcoin",
+                      label: <BitcoinSVG />,
                     },
                     {
-                      value: "lucy",
-                      label: "Lucy",
+                      value: "Ethereum",
+                      label: <EthereumSVG />,
                     },
                     {
-                      value: "disabled",
-                      disabled: true,
-                      label: "Disabled",
+                      value: "Ripple",
+                      label: <RippleSVG />,
                     },
                     {
-                      value: "Yiminghe",
-                      label: "yiminghe",
+                      value: "Litcoin",
+                      label: <Litcoin />,
                     },
                   ]}
                 />
               </Form.Item>
 
-              <Form.Item label="Enter Amount">
+              <Form.Item label="Amount">
                 <InputNumber
                   size="large"
                   min={1}
-                  max={100000}
-                  defaultValue={3}
-                  onChange={onChange}
+                  defaultValue={amountFrom}
+                  onChange={setAmountFrom}
+                  onKeyPress={onlyNumber}
                   style={{ width: 160, height: 42 }}
                 />
               </Form.Item>
@@ -72,13 +106,15 @@ const Header = () => {
 
               <Form.Item label="Select Currency">
                 <Select
+                  suffixIcon={<ArrowIcon />}
                   className="second-select"
-                  defaultValue="lucy"
+                  defaultValue={currencyTo}
                   style={{ width: 200, height: 42 }}
+                  onChange={setCurrencyTo}
                   options={[
                     {
-                      value: "lucy",
-                      label: "Lucy",
+                      value: "USD",
+                      label: <USD />,
                     },
                   ]}
                 />
@@ -86,21 +122,35 @@ const Header = () => {
 
               <Form.Item label="Enter Amount">
                 <InputNumber
+                  min={1}
                   size="large"
                   style={{ width: 160, height: 42 }}
-                  defaultValue={1000}
-                  formatter={(value) =>
-                    `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                  }
+                  defaultValue={amountTo}
+                  formatter={(value) => {
+                    return `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                  }}
                   parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-                  onChange={onChange}
+                  onChange={setAmountTo}
+                  onKeyPress={onlyNumber}
                 />
               </Form.Item>
 
               {isMobile ? (
-                <Button className="exchange-button btn">Exchange</Button>
+                <Button
+                  className="exchange-button btn"
+                  disabled={isButtonDisabled}
+                  onClick={saveExchange}
+                >
+                  Exchange
+                </Button>
               ) : (
-                <Button className="save-button btn">Save</Button>
+                <Button
+                  className="save-button btn"
+                  disabled={isButtonDisabled}
+                  onClick={saveExchange}
+                >
+                  Save
+                </Button>
               )}
             </Space>
           </div>

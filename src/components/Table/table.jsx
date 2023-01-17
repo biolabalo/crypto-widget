@@ -1,82 +1,56 @@
-import { Table } from 'antd';
+import { Table } from "antd";
+
 const columns = [
   {
-    title: 'Date & Time',
-    dataIndex: 'DateTime',
+    title: "Date & Time",
+    dataIndex: "createdAt",
   },
   {
-    title: 'Chinese Score',
-    dataIndex: 'chinese',
+    title: "Currency From",
+    dataIndex: "currencyFrom",
     sorter: {
-      compare: (a, b) => a.chinese - b.chinese,
+      compare: (a, b) => a.currencyFrom - b.currencyFrom,
       multiple: 3,
     },
   },
   {
-    title: 'Chinese Score',
-    dataIndex: 'chinese',
+    title: "Amount 1",
+    dataIndex: "amountFrom",
     sorter: {
-      compare: (a, b) => a.chinese - b.chinese,
+      compare: (a, b) => a.amountFrom - b.amountFrom,
       multiple: 3,
     },
   },
   {
-    title: 'Chinese Score',
-    dataIndex: 'chinese',
+    title: "CurrencyTo",
+    dataIndex: "currencyTo",
     sorter: {
-      compare: (a, b) => a.chinese - b.chinese,
+      compare: (a, b) => a.currencyTo - b.currencyTo,
       multiple: 3,
     },
   },
   {
-    title: 'Math Score',
-    dataIndex: 'math',
+    title: "Amount 2",
+    dataIndex: "amountTo",
     sorter: {
-      compare: (a, b) => a.math - b.math,
+      compare: (a, b) => a.amountTo - b.amountTo,
       multiple: 2,
     },
   },
   {
-    title: 'English Score',
-    dataIndex: 'english',
+    title: "Type",
+    dataIndex: "type",
     sorter: {
-      compare: (a, b) => a.english - b.english,
+      compare: (a, b) => a.type - b.type,
       multiple: 1,
     },
   },
 ];
-const data = [
-  {
-    key: '1',
-    DateTime: '22/01/2022  20:55',
-    chinese: 98,
-    math: 60,
-    english: 70,
-  },
-  {
-    key: '2',
-    DateTime: '22/01/2022  20:55',
-    chinese: 98,
-    math: 66,
-    english: 89,
-  },
-  {
-    key: '3',
-    DateTime: '22/01/2022  20:55',
-    chinese: 98,
-    math: 90,
-    english: 70,
-  },
-  {
-    key: '4',
-    DateTime: '22/01/2022  20:55',
-    chinese: 88,
-    math: 99,
-    english: 89,
-  },
-];
+
 const onChange = (pagination, filters, sorter, extra) => {
-  console.log('params', pagination, filters, sorter, extra);
+  console.log("params", pagination, filters, sorter, extra);
 };
-const TableWidget = () => <Table columns={columns} dataSource={data} onChange={onChange} />;
+const TableWidget = ({ tableData }) => (
+  <Table columns={columns} dataSource={tableData} onChange={onChange} />
+);
 export default TableWidget;
