@@ -1,21 +1,7 @@
-# RED ACRE CRPTO WIDGET
-
-## Installation
-
-- Ensure to clone the  backend repository first from github ```https://github.com/biolabalo/crypto-widget-api.git``` and follow the installation instructions on the README.md file
-
-- After setting up and running the backend , clone the  backend repository first from github ```https://github.com/biolabalo/crypto-widget-api.git``` and follow the installation instructions on the README.md file
-
-- At the root of the home directory ```crypto-widget``` run ```npm install```
-
-- Change directory to client directory ```$Mohamad-Siysinyuy-Banbong/client``` and run ```npm install```
-- At the root directory, create a ```config.env``` file and input the following configuration.
-
-
 
 # RED ACRE CRPTO WIDGET
 
-A simple React application that displays several currency exchanges rate and allows the user to exchange USD.
+A simple React wiget that displays several currency exchanges rate and allows the user to exchange USD.
 
 ## Getting Started
 
@@ -25,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Node.js and npm (comes with Node)
 - A text editor or IDE of your choice
-- Cloning, installing and running the backend api first: `https://github.com/biolabalo/crypto-widget-api`
+- Cloning, installing and running the backend repo first: `https://github.com/biolabalo/crypto-widget-api`
 
 ### Installation
 
@@ -35,14 +21,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Running the App
 
-1. Start the development server: `npm start`
-2. Open your web browser and navigate to `http://localhost:3000` to view the app
+1. Start the development server: `npm run dev`
+2. Open your web browser and navigate to `http://localhost:5173/` to view the app
 
-
-
-## Preview
-
-You can preview the live version of the app at https://username.github.io/react-app
 
 ## Additional Information (Video explanation)
 
