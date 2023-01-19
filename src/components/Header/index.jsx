@@ -64,7 +64,7 @@ const Header = ({ socket, isConnected }) => {
         <Form>
           <div className="input-container">
             <Space size={16}>
-              <Form.Item label="Select Currency">
+              <Form.Item label="Currency From">
                 <Select
                   suffixIcon={<ArrowIcon />}
                   defaultValue={currencyFrom}
@@ -104,7 +104,7 @@ const Header = ({ socket, isConnected }) => {
 
               {!isMobile && <span>=</span>}
 
-              <Form.Item label="Select Currency">
+              <Form.Item label="Exchange to">
                 <Select
                   suffixIcon={<ArrowIcon />}
                   className="second-select"
@@ -120,7 +120,7 @@ const Header = ({ socket, isConnected }) => {
                 />
               </Form.Item>
 
-              <Form.Item label="Enter Amount">
+              <Form.Item label="Amount">
                 <InputNumber
                   min={1}
                   size="large"

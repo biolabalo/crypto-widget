@@ -1,66 +1,94 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
-import { Form, Input, Select, Button } from "antd";
+import { Form, Select, Button } from "antd";
+import moment from 'moment'
+
+
+
+const fetchExchangeViaFilter = "fetchExchangeViaFilter";
 
 import useWindowWidth from "../../hooks/useMediaQuery";
 
-const { Option } = Select;
-
-const DatePickerComp = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const DatePickerComp = ({
+  socket,
+  setCurrentPage,
+  pageSize,
+  fromDate,
+  setFromDate,
+  toDate,
+  setToDate,
+  type,
+  setType,
+}) => {
   const isMobile = useWindowWidth();
 
-  const handleChange = () => console.log("");
+  const fetchExchanges = () => {
+    socket.emit(fetchExchangeViaFilter, {
+      page: 1,
+      limit: pageSize,
+      ...(fromDate ? {fromDate: moment(fromDate).format()} : {}),
+      ...(toDate ? {toDate: moment(toDate).format()} : {}),
+      type,
+    });
+    setCurrentPage(1);
+  };
+
+  const minToDate = fromDate ? new Date(fromDate) : "";
+  if (minToDate) {
+    minToDate.setDate(minToDate.getDate() + 1);
+  }
 
   return (
     <div className="date-picker-container">
       <div className="date-pick-parent">
         <label className="">From date</label>
         <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          selected={fromDate}
+          onChange={(date) => {
+            setFromDate(date);
+            setToDate("");
+          }}
+          placeholderText="22/01/2022"
         />
       </div>
 
       <div className="date-pick-parent">
         <label className="">To date </label>
         <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          selected={toDate}
+          minDate={minToDate}
+          onChange={(date) => setToDate(date)}
+          placeholderText="22/01/2022"
         />
       </div>
 
       {!isMobile && (
         <Form.Item label="Type" className="select-type-date-picker">
           <Select
-            defaultValue="lucy"
-            style={{ width: 200, height: 42 }}
-            onChange={handleChange}
+            defaultValue={type}
+            style={{ width: 160, height: 42 }}
+            onChange={setType}
             options={[
               {
-                value: "jack",
-                label: "Jack",
+                value: "live_price",
+                label: "Live Price",
               },
               {
-                value: "lucy",
-                label: "Lucy",
+                value: "exchanged",
+                label: "Exchanged",
               },
               {
-                value: "disabled",
-                disabled: true,
-                label: "Disabled",
-              },
-              {
-                value: "Yiminghe",
-                label: "yiminghe",
+                value: "",
+                label: "All",
               },
             ]}
           />
         </Form.Item>
       )}
 
-      <Button className="filter-btn">Save</Button>
+      <Button className="filter-btn" onClick={fetchExchanges}>
+        Filter
+      </Button>
     </div>
   );
 };

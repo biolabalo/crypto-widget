@@ -1,266 +1,404 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:display=swap');
- body {
-     font-family: 'Red Hat Display';
-     margin: 0px;
+@import url("https://fonts.googleapis.com/css2?family=Raleway:display=swap");
+body {
+  font-family: "Red Hat Display";
+  margin: 0px;
 }
- body, html, #root, .App{
-     min-height: 100vh;
+body,
+html,
+#root,
+.App {
+  min-height: 100vh;
 }
- .App{
-    /* width: 70%;
-     margin: 0 auto */
+.header {
+  height: 234px;
+  box-shadow: 0px 8px 16px rgba(17, 17, 17, 0.06);
+  padding-top: 60px;
+  margin-bottom: 50px;
 }
- .header{
-     height: 234px;
-     box-shadow: 0px 8px 16px rgba(17, 17, 17, 0.06);
-     padding-top: 60px;
-     margin-bottom: 50px;
+.header-children-container {
+  width: 70%;
+  margin: 0 auto;
 }
- .header-children-container{
-     width: 70%;
-     margin: 0 auto 
+.title {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  color: #000000;
+  margin-top: 0px;
+  margin-bottom: 27px;
 }
- .title{
-     font-family: 'Red Hat Display';
-     font-style: normal;
-     font-weight: 700;
-     font-size: 24px;
-     color: #000000;
-     margin-top: 0px;
-     margin-bottom: 27px;
+.ant-select-selector {
+  height: 42px !important;
 }
-.ant-select-selector{
-     height: 42px !important;
+.ant-select-selection-item {
+  padding-top: 5px !important;
 }
- .ant-select-selection-item{
-     padding-top: 5px !important;
-}
- .second-select .ant-select-selector{
-     background: #E0E0E0 !important 
+.second-select .ant-select-selector {
+  background: #e0e0e0 !important;
 }
 
-.input-container .ant-form-item-row{
+.input-container .ant-form-item-row {
   display: block;
 }
- .save-button{
-     display: flex;
-     flex-direction: row;
-     justify-content: center;
-     align-items: center;
-     padding: 12px 24px;
-     gap: 10px;
-     width: 84px;
-     height: 40px;
-     background: #49CD5E;
-     border-radius: 8px;
-     box-shadow: none;
+.save-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  gap: 10px;
+  width: 84px;
+  height: 40px;
+  background: #49cd5e;
+  border-radius: 8px;
+  box-shadow: none;
 }
- .exchange-button{
-     padding: 12px 24px;
-     gap: 10px;
-     width: 100%;
-     height: 40px;
-     background: #49CD5E;
-     border-radius: 8px;
+.exchange-button {
+  padding: 12px 24px;
+  gap: 10px;
+  width: 100%;
+  height: 40px;
+  background: #49cd5e;
+  border-radius: 8px;
 }
- .btn{
-     font-family: 'Red Hat Display';
-     font-style: normal;
-     font-weight: 600;
-     font-size: 16px;
-     line-height: 100%;
-     text-align: center;
-     color: #FFFFFF;
-     border: none;
-}
-
-.btn:hover{
-  color: #FFFFFF !important;
-
+.btn {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  text-align: center;
+  color: #ffffff;
+  border: none;
 }
 
-.history{
-font-family: 'Red Hat Display';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-line-height: 152.2%;
-color: #000000;
-margin-bottom: 20px;
+.btn:hover {
+  color: #ffffff !important;
 }
 
-.table-section{
+.history {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 152.2%;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.table-section {
   max-width: 70% !important;
   margin: 0 auto;
 }
 
- .ant-table-thead tr:first-child >*:first-child{
-  border-start-start-radius: 4px
+.ant-table-thead .ant-table-cell {
+  height: 30px !important;
 }
 
-#root > div > div.table-section > div > div > div > div > div > div > table > thead > tr > th:nth-child(1){
-  border-start-start-radius: 4px !important
+.ant-table-thead tr:first-child > *:first-child {
+  border-start-start-radius: 4px;
 }
 
-#root > div > div.table-section > div > div > div > div > div > div > table > thead > tr > th:nth-child(6){
-  border-start-end-radius: 4px !important
+#root
+  > div
+  > div.table-section
+  > div
+  > div
+  > div
+  > div
+  > div
+  > div
+  > table
+  > thead
+  > tr
+  > th:nth-child(1) {
+  border-start-start-radius: 4px !important;
 }
 
-.table-section thead tr th{
-  background: #EEEEEE !important;
+#root
+  > div
+  > div.table-section
+  > div
+  > div
+  > div
+  > div
+  > div
+  > div
+  > table
+  > thead
+  > tr
+  > th:nth-child(6) {
+  border-start-end-radius: 4px !important;
+}
+
+.table-section thead tr th {
+  background: #eeeeee !important;
   height: 30px;
 }
 
-.date-picker-container{
-  margin-bottom: 40px ;
+.exchanged {
+  color: #6368df;
+}
+
+.live_price {
+  color: #5dbe7e;
+}
+
+.date-picker-container {
+  margin-bottom: 40px;
   display: flex;
-  gap: 16px
+  gap: 16px;
 }
 
-.date-picker-container label , .input-container label{
-font-family: Red Hat Display;
-font-size: 14px;
-font-weight: 400;
-line-height: 21px;
-letter-spacing: 0em;
-text-align: left;
-
+.date-picker-container label,
+.input-container label {
+  font-family: "Red Hat Display";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
-.date-picker-container .ant-form-item-row{
+.date-picker-container .ant-form-item-row {
   display: block;
 }
 
-.react-datepicker-wrapper, .react-datepicker__input-container, .react-datepicker__input-container input {
+.react-datepicker-wrapper {
   height: 42px !important;
+  width: 160px !important;
 }
 
-.react-datepicker-wrapper{
-  width: 200px !important;
-}
-.react-datepicker__input-container input {
-  border: 1px solid #E0E0E0;
+.react-datepicker__input-container {
+  height: 42px;
+  width: 160px;
   border-radius: 8px;
-  width: 200px;
-  /* padding-left: 16px */
+  border: 1px solid #eeeeee;
 }
 
-.select-type-date-picker label{
-  height: 22px !important;
+.react-datepicker__input-container input {
+  border: none;
+  position: relative;
+  top: 11px;
+  left: 11px;
+  width: 60%;
 }
 
-.filter-btn{
-  border: 1px solid #1B31A8;
- border-radius: 8px;
- width: 78px;
-height: 40px;
- margin-top: 24px;
- color: #1B31A8;
+.react-datepicker__input-container input:focus-visible {
+  outline: none !important;
 }
 
-.date-pick-parent{
-  width: 200px
+.react-datepicker__input-container input + img {
+  background-image: url("./assets/Vector.png");
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
 }
 
-.react-datepicker-popper{
+.table-section .ant-form-item-label {
+  vertical-align: top;
+  height: 19px;
+}
+
+.table-section .select-type-date-picker label {
+  height: 14px !important;
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.filter-btn {
+  border: 1px solid #1b31a8;
+  border-radius: 8px;
+  width: 78px;
+  height: 40px;
+  margin-top: 22px;
+  color: #1b31a8;
+}
+
+.filter-btn span {
+  font-family: 'Red Hat Display';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  
+}
+.date-pick-parent {
+  width: 165px;
+}
+
+.react-datepicker-popper {
   z-index: 10;
 }
 
-.react-datepicker__header{
+.react-datepicker__header {
   background-color: white !important;
   border-bottom: none !important;
-
 }
 
-.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range{
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
   background: #000000 !important;
- border-radius: 8px !important;
+  border-radius: 8px !important;
 }
 
-.react-datepicker__day, .react-datepicker__month-text, .react-datepicker__quarter-text, .react-datepicker__year-text{
-  background: #FFFFFF;
+.react-datepicker__day,
+.react-datepicker__month-text,
+.react-datepicker__quarter-text,
+.react-datepicker__year-text {
+  background: #ffffff;
   border: 1px solid #000000;
   border-radius: 8px;
 }
 
-.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before{
-  display: none ! important;
-}
-
-.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after{
+.react-datepicker-popper[data-placement^="bottom"]
+  .react-datepicker__triangle::before {
   display: none !important;
 }
 
-.display-card{
-height: 85px;
-background: #F9F9F9;
-padding: 25px;
-border: 1px solid #EFF0F7;
-border-radius: 12px;
+.react-datepicker-popper[data-placement^="bottom"]
+  .react-datepicker__triangle::after {
+  display: none !important;
 }
 
-.crypto-info{
- display: flex;
- justify-content: space-between;
- 
+.display-card {
+  height: 85px;
+  background: #f9f9f9;
+  padding: 25px;
+  border: 1px solid #eff0f7;
+  border-radius: 12px;
+}
+
+.crypto-info {
+  display: flex;
+  justify-content: space-between;
 }
 .crypto-info p {
   margin: 0px;
-  font-family: Red Hat Display;
-font-size: 16px;
-font-weight: 500;
-line-height: 24px;
-letter-spacing: 0px;
-text-align: center;
-color: #000000;
-
+  font-family: "Red Hat Display";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #000000;
 }
-.rounded-green-circle{
-  background: #40B439;
+.rounded-green-circle {
+  background: #40b439;
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  
 }
 
+.amount,
+.crypt-val {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 152.2%;
+  text-align: center;
+}
 
-.amount, .crypt-val{
-font-family: Red Hat Display;
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 152.2%;
-text-align: center;
+.feed-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  height: 48px;
+  background: #49cd5e;
 }
- @media only screen and (max-width: 768px) {
-     .header {
-         height: 503px;
-         width: 100%;
-         border-radius: 0px;
-         box-shadow: 0px 8px 16px rgb(17 17 17 / 6%);
-        padding-top: 36px;
-        
-    }
-     .ant-space, .ant-space-item, .ant-select, .ant-input-number{
-         width: 100% !important;
-    }
-     Form .input-container .ant-space {
-         flex-direction: column;
-    }
-     Form .ant-form-item {
-         margin-bottom: 8px;
-    }
+
+.feed-back p {
+  font-family: "Red Hat Display";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
 }
- 
+
+.ant-table-pagination-right {
+  justify-content: flex-start !important;
+}
+
+.ant-pagination-item-active {
+  background: #000000 !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #ffffff !important;
+}
+
+.ant-form-item-label > label::after {
+  display: none;
+}
+
+.feed-back-enter {
+  opacity: 0;
+}
+.feed-back-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.feed-back-exit {
+  opacity: 1;
+}
+.feed-back-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    height: 503px;
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: 0px 8px 16px rgb(17 17 17 / 6%);
+    padding-top: 36px;
+  }
+  .ant-space,
+  .ant-space-item,
+  .ant-select,
+  .ant-input-number {
+    width: 100% !important;
+  }
+  Form .input-container .ant-space {
+    flex-direction: column;
+  }
+  Form .ant-form-item {
+    margin-bottom: 8px;
+  }
+}
 
 @media only screen and (max-width: 575px) {
- 
   .header {
     height: 530px;
-}
-
-  .date-pick-parent, .react-datepicker-wrapper, .react-datepicker__input-container input{
-    width: 114px
   }
 
+  .date-pick-parent,
+  .react-datepicker-wrapper,
+  .react-datepicker__input-container input {
+    width: 114px;
+  }
 }

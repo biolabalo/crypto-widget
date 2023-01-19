@@ -1,5 +1,5 @@
 import { Table } from "antd";
-
+const fetchExchange = "fetchExchange";
 const columns = [
   {
     title: "Date & Time",
@@ -44,13 +44,49 @@ const columns = [
       compare: (a, b) => a.type - b.type,
       multiple: 1,
     },
+    render: (text, record) => {
+      if (record.type === "exchanged") {
+        return <span className="exchanged">Exchanged</span>;
+      } else if (record.type === "live_price") {
+        return <span className="live_price">Live Price</span>;
+      } else {
+        return <span>{text}</span>;
+      }
+    },
   },
 ];
 
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
+const TableWidget = ({
+  tableData,
+  totalCount,
+  socket,
+  pageSize,
+  currentPage,
+}) => {
+  const pagination = {
+    total: totalCount,
+    pageSize,
+    current: currentPage,
+  };
+
+  const onChange = (pagination, filters, sorter, extra) => {
+    if (extra.action === "paginate") {
+      socket.emit(fetchExchange, {
+        page: pagination.current,
+        limit: pageSize
+      });
+    }
+  };
+
+  return (
+    <Table
+      socket={socket}
+      columns={columns}
+      dataSource={tableData.map((item) => ({ ...item, key: item._id }))}
+      onChange={onChange}
+      pagination={pagination}
+      pageSize={pageSize}
+    />
+  );
 };
-const TableWidget = ({ tableData }) => (
-  <Table columns={columns} dataSource={tableData} onChange={onChange} />
-);
 export default TableWidget;
