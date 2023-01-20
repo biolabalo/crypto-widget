@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
 import Table from "./table";
 import DatePicker from "./datePicker";
 import useWindowWidth from "../../hooks/useMediaQuery";
@@ -7,9 +8,13 @@ import { CSSTransition } from "react-transition-group";
 
 const newExchange = "newExchange";
 const allExchange = "allExchange";
+const general = "general";
+const paginatedExchanges = "paginatedExchanges";
+const liveExchange = "liveExchange";
 
 const TableSection = ({ socket, isConnected }) => {
   const isMobile = useWindowWidth();
+  const pageResultType = useRef(general);
   const [tableData, setTableData] = useState([]);
   const [showMessage, setShowMessage] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +46,26 @@ const TableSection = ({ socket, isConnected }) => {
     return () => socket.off(allExchange, eventlistener);
   }, []);
 
+  useEffect(() => {
+    const eventlistener = ({ data, count, page }) => {
+      setTableData(data);
+      setTotalCount(count);
+      setCurrentPage(page);
+    };
+    socket.on(paginatedExchanges, eventlistener);
+    return () => socket.off(paginatedExchanges, eventlistener);
+  }, []);
+
+  useEffect(() => {
+    const eventlistener = ({ savedLivePrices , count }) => {
+      setTableData((prev) => [...savedLivePrices, ...prev]);
+      setTotalCount(count);
+      setCurrentPage(1);
+    };
+    socket.on(liveExchange, eventlistener);
+    return () => socket.off(liveExchange, eventlistener);
+  }, []);
+
   return (
     <div className="table-section">
       <h1 className="history">History</h1>
@@ -54,6 +79,7 @@ const TableSection = ({ socket, isConnected }) => {
         setToDate={setToDate}
         type={type}
         setType={setType}
+        pageResultType={pageResultType}
       />
       {isMobile ? (
         <DisplayCard
@@ -63,6 +89,7 @@ const TableSection = ({ socket, isConnected }) => {
           totalCount={totalCount}
           pageSize={pageSize}
           currentPage={currentPage}
+          pageResultType={pageResultType}
         />
       ) : (
         <Table
@@ -72,6 +99,10 @@ const TableSection = ({ socket, isConnected }) => {
           totalCount={totalCount}
           pageSize={pageSize}
           currentPage={currentPage}
+          fromDate={fromDate}
+          toDate={toDate}
+          type={type}
+          pageResultType={pageResultType}
         />
       )}
 

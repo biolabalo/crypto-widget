@@ -402,3 +402,11 @@ html,
     width: 114px;
   }
 }
+
+
+
+@media screen and (min-width: 64em){
+  .dBsHYA {
+    flex: 0 0 50%;
+}
+}

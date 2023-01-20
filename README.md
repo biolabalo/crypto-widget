@@ -25,11 +25,10 @@ These instructions will get you a copy of the project up and running on your loc
 2. Open your web browser and navigate to `http://localhost:5173/` to view the app
 
 
-## Additional Information (Video explanation)
+## working demo video(Video explanation)
 
-- For more information on React, visit the [official website](https://reactjs.org/)
-- If you have any issues or questions, please open an issue on the [GitHub repository](https://github.com/username/react-app)
+- [click here to watch video](https://vimeo.com/790841525)
 
 ## Author
 
-Balogun Akeem, balogunbiola101@gmail.com.
+Balogun Akeem, balogunbiola101`AT`gmail.com.

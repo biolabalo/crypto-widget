@@ -2,12 +2,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Form, Select, Button } from "antd";
 import moment from 'moment'
-
+import useWindowWidth from "../../hooks/useMediaQuery";
 
 
 const fetchExchangeViaFilter = "fetchExchangeViaFilter";
+const filteredExchange = 'filteredExchange'
 
-import useWindowWidth from "../../hooks/useMediaQuery";
 
 const DatePickerComp = ({
   socket,
@@ -19,10 +19,14 @@ const DatePickerComp = ({
   setToDate,
   type,
   setType,
+  pageResultType
 }) => {
   const isMobile = useWindowWidth();
 
   const fetchExchanges = () => {
+
+    pageResultType.current = filteredExchange;
+
     socket.emit(fetchExchangeViaFilter, {
       page: 1,
       limit: pageSize,
@@ -48,7 +52,7 @@ const DatePickerComp = ({
             setFromDate(date);
             setToDate("");
           }}
-          placeholderText="22/01/2022"
+          placeholderText="22/01/****"
         />
       </div>
 
@@ -58,7 +62,7 @@ const DatePickerComp = ({
           selected={toDate}
           minDate={minToDate}
           onChange={(date) => setToDate(date)}
-          placeholderText="22/01/2022"
+          placeholderText="22/01/****"
         />
       </div>
 
