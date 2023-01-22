@@ -67,7 +67,8 @@ const Header = ({ socket, isConnected }) => {
               <Form.Item label="Currency From">
                 <Select
                   suffixIcon={<ArrowIcon />}
-                  defaultValue={currencyFrom}
+                  placeholder='select'
+                  // defaultValue={currencyFrom}
                   style={{ width: 200, height: 42 }}
                   onChange={setCurrencyFrom}
                   options={[

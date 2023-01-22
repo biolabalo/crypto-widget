@@ -45,24 +45,24 @@ const DatePickerComp = ({
   return (
     <div className="date-picker-container">
       <div className="date-pick-parent">
-        <label className="">From date</label>
+        <label className="">{ isMobile ? 'Start Date' : 'From date' } </label>
         <DatePicker
           selected={fromDate}
           onChange={(date) => {
             setFromDate(date);
             setToDate("");
           }}
-          placeholderText="22/01/****"
+          placeholderText={ isMobile ? 'Select' : '22/01/****' }
         />
       </div>
 
       <div className="date-pick-parent">
-        <label className="">To date </label>
+        <label className=""> { isMobile ? 'End date' : 'To date'} </label>
         <DatePicker
           selected={toDate}
           minDate={minToDate}
           onChange={(date) => setToDate(date)}
-          placeholderText="22/01/****"
+          placeholderText={ isMobile ? 'Today' : '22/01/****' }
         />
       </div>
 
