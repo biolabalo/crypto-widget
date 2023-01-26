@@ -29,6 +29,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 - [click here to watch video](https://vimeo.com/791123989/caa7d71a83)
 
+
+https://user-images.githubusercontent.com/22154654/214829588-3918df34-b3c0-46e9-99c0-b557c5995253.mp4
+
+
 ## Author
 
 Balogun Akeem, balogunbiola101`AT`gmail.com.
